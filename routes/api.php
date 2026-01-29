@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
+
+
+// Route::middleware(['api.key', 'auth:sanctum', 'throttle:api'])->group(function () {     --> need to added api_key into the env file
+
+Route::middleware(['throttle:api'])->group(function () {
+
+    // Permission Related Route
+    Route::controller(PermissionController::class)->name('permissions.')->prefix('permissions')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{permission}/edit', 'edit')->name('edit');
+        Route::put('/{permission}', 'update')->name('update');
+        Route::patch('/{permission}/status', 'changeStatus')->name('changeStatus');
+        Route::delete('/{permission}', 'destroy')->name('destroy');
+    });
+
+    //Role Related route
+    Route::controller(RoleController::class)->name('roles.')->prefix('roles')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{role}', 'show')->name('show');
+        Route::get('/{role}/edit', 'edit')->name('edit');
+        Route::put('/{role}', 'update')->name('update');
+        Route::delete('/{role}', 'destroy')->name('destroy');
+        Route::patch('/{role}/status', 'changeStatus')->name('changeStatus');
+    });
+
+});
