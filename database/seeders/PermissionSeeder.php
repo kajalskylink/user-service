@@ -158,6 +158,80 @@ class PermissionSeeder extends Seeder
                 'group_name' => 'Company Management',
                 'is_active' => true,
             ],
+
+            //Buyer Permission
+            [
+                'id' => 21,
+                'name' => 'can-view-buyer',
+                'guard_name' => 'web',
+                'group_name' => 'Buyer Management',
+                'is_active' => true,
+            ],
+            [
+                'id' => 22,
+                'name' => 'can-view-details-buyer',
+                'guard_name' => 'web',
+                'group_name' => 'Buyer Management',
+                'is_active' => true,
+            ],
+            [
+                'id' => 23,
+                'name' => 'can-create-buyer',
+                'guard_name' => 'web',
+                'group_name' => 'Buyer Management',
+                'is_active' => true,
+            ],
+            [
+                'id' => 24,
+                'name' => 'can-edit-buyer',
+                'guard_name' => 'web',
+                'group_name' => 'Buyer Management',
+                'is_active' => true,
+            ],
+            [
+                'id' => 25,
+                'name' => 'can-delete-buyer',
+                'guard_name' => 'web',
+                'group_name' => 'Buyer Management',
+                'is_active' => true,
+            ],
+
+            // Supplier Permission
+            [
+                'id' => 26,
+                'name' => 'can-view-supplier',
+                'guard_name' => 'web',
+                'group_name' => 'Supplier Management',
+                'is_active' => true,
+            ],
+            [
+                'id' => 27,
+                'name' => 'can-view-details-supplier',
+                'guard_name' => 'web',
+                'group_name' => 'Supplier Management',
+                'is_active' => true,
+            ],
+            [
+                'id' => 28,
+                'name' => 'can-create-supplier',
+                'guard_name' => 'web',
+                'group_name' => 'Supplier Management',
+                'is_active' => true,
+            ],
+            [
+                'id' => 29,
+                'name' => 'can-edit-supplier',
+                'guard_name' => 'web',
+                'group_name' => 'Supplier Management',
+                'is_active' => true,
+            ],
+            [
+                'id' => 30,
+                'name' => 'can-delete-supplier',
+                'guard_name' => 'web',
+                'group_name' => 'Supplier Management',
+                'is_active' => true,
+            ],
         ];
 
         foreach ($permissions as $permission) {

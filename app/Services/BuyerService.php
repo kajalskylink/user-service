@@ -23,4 +23,12 @@ class BuyerService extends BaseModelService
     {
         return $this->model()::where('is_active', $isActive)->get();
     }
+
+    public function changeStatus(Buyer $buyer, $isActive)
+    {
+        $isActive = ($buyer->is_active) ? false : true;
+        $buyer->is_active = $isActive;
+        $buyer->save();
+        return $buyer;
+    }
 }
