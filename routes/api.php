@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserController;
 
-// Route::middleware(['api.key', 'auth:sanctum', 'throttle:api'])->group(function () {     --> need to added api_key into the env file
+// Route::middleware(['api.key', 'auth:sanctum', 'throttle:api'])->group(function () {     --> need to be added api_key into the env file
 
 Route::middleware(['throttle:api'])->group(function () {
 
@@ -57,4 +58,21 @@ Route::middleware(['throttle:api'])->group(function () {
         Route::put('/{supplier}', 'changeStatus')->name('changeStatus');
     });
 
+});
+
+// User Related Route
+Route::controller(UserController::class)->name('users.')->prefix('users')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/', 'store')->name('store');
+    Route::get('/{user}', 'show')->name('show');
+    Route::get('/{user}/edit', 'edit')->name('edit');
+    Route::put('/{user}', 'update')->name('update');
+    Route::delete('/{user}', 'destroy')->name('destroy');
+
+    Route::prefix('{user}')->group(function() {
+        Route::patch('update-roles',  'updateRoles')->name('users.updateRoles');
+        Route::patch('update-password', 'updatePassword')->name('users.updatePassword');
+        Route::patch('change-status','changeStatus')->name('users.changeStatus');
+    });
 });

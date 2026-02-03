@@ -22,7 +22,12 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'mobile_number',
+        'mobile_number_verified_at',
         'password',
+        'otp',
+        'last_login_at',
+        'is_active'
     ];
 
     /**
@@ -45,6 +50,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'mobile_number_verified_at' => 'datetime',
+            'otp_expire_at' => 'datetime',
         ];
     }
 }
